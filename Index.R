@@ -42,4 +42,46 @@ myarray
 now <- Sys.time()
 now
 
+class(now)
+unclass(now)
+
+mil <- 1000000
+now - mil
+
+data(iris)
+head(iris)
+?iris
+class(iris)
+class(iris$Sepal.Length)
+class(iris$Species)
+str(iris)
+summary(iris)
+iris$Sepal.Length
+iris[1,]
+iris[,1]
+iris[,"Species"]
+table(iris$Species)
+LogicIndex <- iris[,"Petal.Length"] > 5.5
+iris[LogicIndex,]
+
+# Summary Statistics
+mean(iris$Sepal.Length)
+sd(iris$Sepal.Length)
+
+# Functions
+MeanAndStd <- function(x){
+  c(meanVar=mean(x), std=sd(x))
+}
+MeanAndStd(iris$Sepal.Length)
+
+Stats <- aggregate(Sepal.Length ~ Species, data=iris,
+                   FUN=MeanAndStd)
+
+
+# Visualization
+plot(iris$Sepal.Length, col=as.numeric(iris$Species),
+     ylab = "Sepal Length")
+legend('topleft', legend = levels(iris$Species), 
+       pch = 1:3)
+boxplot(Sepal.Length ~ Species, data = iris)
 
